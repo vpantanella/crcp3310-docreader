@@ -1,24 +1,26 @@
-BufferedReader reader;
-String alice;
+// YOUR NAME
+// ...
 
-void setup(){
+BufferedReader reader;
+final String FILENAME = "alice.txt";
+
+void setup() {
   size(400, 400);
-  reader = createReader("Alice.txt");
+  readAndPrintOneCharacter();
 }
 
-void draw(){
-  try{
-    alice = reader.readLine();
-  } catch (IOException e){
+void draw() {
+  
+}
+
+void readAndPrintOneCharacter() {
+  reader = createReader(FILENAME);
+  try {
+    int character = reader.read();
+    println((char)character);
+  } catch (IOException e) {
+    println("Could not read data.");
     e.printStackTrace();
-    alice = null;
   }
-  if (alice == null){
-    noLoop();
-  }else {
-    String[] pieces = split(alice, TAB);
-    int x = int(pieces[0]);
-    int y = int(pieces[1]);
-    point(x,y);
-  }
+  
 }
